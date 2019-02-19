@@ -27,3 +27,40 @@ indexDB 极简API 简单使用
     console.log(err) // 读取缓存失败
   })
 ```
+
+### 使用
+- 引入idbjs
+```
+import indexDB from 'idbjs'
+```
+
+- 创建对象实例
+```
+// new IndexDB(CONFIG)
+// 例
+const db = new IndexDB({
+  name: 'mydb', // DB名称
+  version: 1, // DB版本，每次修改objectStoreList都需要加1
+  cacheTime: 300 * 1000, // 缓存时间 ms
+  objectStoreList: [{ // 数据对象列表
+    name: 'GOODS',
+    autoIncrement: false // 可选，是否自增
+  }]
+})
+```
+
+- 存储数据
+```
+db.GOODS.put(key, val)
+```
+
+- 读取数据
+```
+db.GOODS.get(key).then(({ data }) => {
+  console.log('读取缓存', data) // val
+  this.syncGoodsDetail(data)
+}).catch(err => {
+  console.log(err) // 读取缓存失败
+})
+```
+
