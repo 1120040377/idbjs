@@ -16,13 +16,14 @@ indexDB 极简API 简单使用
   }
   Vue.prototype.$db = new IndexDB()
 
-// *.vue
-this.$db.GOODS.put(key, val)
 
-this.$db.GOODS.get(key).then(({ data }) => {
-  console.log('读取缓存', data) // val
-  this.syncGoodsDetail(data)
-}).catch(err => {
-  console.log(err) // 读取缓存失败
-})
+// *.vue
+  this.$db.GOODS.put(key, val)
+
+  this.$db.GOODS.get(key).then(({ data }) => {
+    console.log('读取缓存', data) // val
+    this.syncGoodsDetail(data)
+  }).catch(err => {
+    console.log(err) // 读取缓存失败
+  })
 ```
